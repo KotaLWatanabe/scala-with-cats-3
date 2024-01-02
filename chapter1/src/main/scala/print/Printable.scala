@@ -18,3 +18,12 @@ object PrintableInstances {
   given intPrintable: Printable[Int] with
     def format: Int => String = _.toString
 }
+
+object PrintableSyntax {
+  extension [A](value: A)
+    def format(using printable: Printable[A]): String =
+      printable.format(value)
+
+    def print(using printable: Printable[A]): Unit =
+      println(format)
+}
