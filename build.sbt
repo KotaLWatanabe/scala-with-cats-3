@@ -1,7 +1,7 @@
 import Dependencies.*
 
 scalaVersion := "3.3.1"
-name := "ScalaWithCats"
+name := "scala-with-cats-3"
 version := "0.1.0-SNAPSHOT"
 
 lazy val root = project
