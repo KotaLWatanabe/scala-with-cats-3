@@ -1,6 +1,7 @@
 import model.Cat
 import print.PrintableInstances.given
-import print.PrintableSyntax.*
+import print.PrintableSyntax._
+
 object Runner {
   def main(args: Array[String]): Unit = {
     println("print int:")
