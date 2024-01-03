@@ -10,5 +10,5 @@ object Dependencies {
   val catsEffect = "org.typelevel" %% "cats-effect" % catsEffectVersion
 
   // Projects
-  val backendDeps: Seq[ModuleID] = Seq(catsCore, catsEffect)
+  val chapter1: Seq[ModuleID] = Seq(catsCore, catsEffect)
 }
