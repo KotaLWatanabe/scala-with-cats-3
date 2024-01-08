@@ -1,9 +1,12 @@
 package model
 
-import cats.Eq
+import cats.{Eq, Show}
 import print.Printable
 import print.PrintableInstances.given
 import print.PrintableSyntax.*
+import cats.syntax.show.*
+import cats.instances.int.given
+import cats.instances.string.given
 
 final case class Cat(name: String, age: Int, color: String)
 
@@ -18,4 +21,7 @@ object Cat {
       cat1.age == cat2.age &&
       cat1.color == cat2.color
   
+  given catShow: Show[Cat] with
+    def show(cat: Cat): String =
+      s"""${cat.name.show} is a ${cat.age.show} year-old ${cat.color.show} cat."""
 }

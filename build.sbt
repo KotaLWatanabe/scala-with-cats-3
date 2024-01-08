@@ -12,20 +12,33 @@ lazy val root = project
     name := "scala-with-cats-3",
     commonSettings
   )
-  .aggregate(chapter1, chapter2)
+  .aggregate(chapter1, chapter2, chapter3, chapter4)
 
 lazy val chapter1 = project
   .in(file("chapter1"))
   .settings(
     name := "chapter1",
-    commonSettings,
-    libraryDependencies ++= Dependencies.chapter1
+    commonSettings
   )
 
 lazy val chapter2 = project
   .in(file("chapter2"))
   .settings(
     name := "chapter2",
-    commonSettings,
-    libraryDependencies ++= Dependencies.chapter1
+    commonSettings
+  )
+
+lazy val chapter3 = project
+  .in(file("chapter3"))
+  .settings(
+    name := "chapter3",
+    commonSettings
+  )
+  .dependsOn(chapter1)
+
+lazy val chapter4 = project
+  .in(file("chapter4"))
+  .settings(
+    name := "chapter4",
+    commonSettings
   )
