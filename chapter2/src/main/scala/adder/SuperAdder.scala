@@ -1,6 +1,6 @@
 package adder
 
-import monoid.Monoid
+import group.Monoid
 
 object SuperAdder {
   def add[A](items: List[A])(using m: Monoid[A]): A =
