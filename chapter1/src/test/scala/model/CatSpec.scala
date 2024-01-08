@@ -1,6 +1,7 @@
 package model
 
 import cats.syntax.show.*
+import cats.syntax.eq.*
 import model.Cat
 import org.scalacheck.Arbitrary.arbitrary
 import org.scalacheck.Prop.forAll
@@ -28,6 +29,15 @@ class CatSpec extends AnyFunSpec with Matchers with ScalaCheckPropertyChecks {
     it("catShow instance satisfies Show.") {
       forAll(catGenerator) { cat =>
         cat.show shouldBe a[String]
+      }
+    }
+
+    it("catEq instance satisfies Eq.") {
+      forAll(catGenerator) { cat =>
+        cat === cat shouldBe true
+        cat === cat.copy(name = "other") shouldBe false
+        Option(cat) === Option(cat) shouldBe true
+        Option(cat) === Option(cat.copy(name = "other")) shouldBe false
       }
     }
   }
