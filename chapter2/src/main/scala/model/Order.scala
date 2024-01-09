@@ -1,6 +1,6 @@
 package model
 
-import monoid.Monoid
+import group.Monoid
 
 final case class Order(totalCost: Double, quantity: Double)
 
