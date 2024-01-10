@@ -62,7 +62,7 @@ object MonoidInstances:
 
 object MonoidLaws:
   import MonoidSyntax.*
-  
+
   def associativeLaw[A](x: A, y: A, z: A)(using m: Monoid[A]): Boolean =
     (x |+| (y |+| z)) == ((x |+| y) |+| z)
 

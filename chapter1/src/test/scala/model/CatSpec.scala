@@ -24,12 +24,12 @@ class CatSpec extends AnyFunSpec with Matchers with ScalaCheckPropertyChecks:
         cat.format shouldBe a[String]
         cat.format shouldBe s"""${cat.name} is a ${cat.age} year-old ${cat.color} cat."""
       }
-    
+
     it("catShow instance satisfies Show."):
       forAll(catGenerator) { cat =>
         cat.show shouldBe a[String]
       }
-    
+
     it("catEq instance satisfies Eq."):
       forAll(catGenerator) { cat =>
         cat === cat shouldBe true

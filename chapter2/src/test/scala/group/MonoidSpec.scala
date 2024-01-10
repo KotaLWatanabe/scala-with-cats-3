@@ -9,10 +9,7 @@ import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import group.MonoidLaws
 import org.scalacheck.Gen
 
-class MonoidSpec
-    extends AnyFunSpec
-    with Matchers
-    with ScalaCheckPropertyChecks:
+class MonoidSpec extends AnyFunSpec with Matchers with ScalaCheckPropertyChecks:
   describe("Boolean Monoid"):
     it("booleanAndMonoid instance satisfies monoid laws"):
       import group.MonoidInstances.booleanAndMonoid
@@ -20,28 +17,28 @@ class MonoidSpec
         MonoidLaws.associativeLaw(b1, b2, b3) shouldBe true
         MonoidLaws.identityLaw(b1) shouldBe true
       }
-    
+
     it("booleanOrMonoid instance satisfies monoid laws"):
       import group.MonoidInstances.booleanOrMonoid
       forAll { (b1: Boolean, b2: Boolean, b3: Boolean) =>
         MonoidLaws.associativeLaw(b1, b2, b3) shouldBe true
         MonoidLaws.identityLaw(b1) shouldBe true
       }
-    
+
     it("booleanXorMonoid instance satisfies monoid laws"):
       import group.MonoidInstances.booleanXorMonoid
       forAll { (b1: Boolean, b2: Boolean, b3: Boolean) =>
         MonoidLaws.associativeLaw(b1, b2, b3) shouldBe true
         MonoidLaws.identityLaw(b1) shouldBe true
       }
-    
+
     it("booleanXnorMonoid instance satisfies monoid laws"):
       import group.MonoidInstances.booleanXnorMonoid
       forAll { (b1: Boolean, b2: Boolean, b3: Boolean) =>
         MonoidLaws.associativeLaw(b1, b2, b3) shouldBe true
         MonoidLaws.identityLaw(b1) shouldBe true
       }
-  
+
   describe("Set Monoid"):
     val intSetsGen = for {
       i1 <- Gen.listOf(arbitrary[Int])
