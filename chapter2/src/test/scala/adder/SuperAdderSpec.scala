@@ -11,11 +11,11 @@ import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import group.MonoidInstances.{intAdditionMonoid, stringMonoid, optionMonoid}
 
 class SuperAdderSpec
-  extends AnyFunSpec
+    extends AnyFunSpec
     with Matchers
-    with ScalaCheckPropertyChecks {
-  describe("SuperAdder") {
-    it("add method combine list elements all") {
+    with ScalaCheckPropertyChecks:
+  describe("SuperAdder"):
+    it("add method combine list elements all"):
       forAll(Gen.listOf(arbitrary[Int])) { intList =>
         SuperAdder.add(intList) shouldBe intList.sum
       }
@@ -25,7 +25,9 @@ class SuperAdderSpec
       forAll(Gen.listOf(arbitrary[Option[Int]])) { optIntList =>
         val allNone = optIntList.forall(_.isEmpty)
         val total = optIntList.filter(_.isDefined).map(_.get).sum
-        SuperAdder.add(optIntList) shouldBe { if(allNone) None else Some(total) }
+        SuperAdder.add(optIntList) shouldBe {
+          if (allNone) None else Some(total)
+        }
       }
       forAll(Gen.listOf(arbitrary[Option[String]])) { optStrList =>
         val allNone = optStrList.forall(_.isEmpty)
@@ -34,6 +36,3 @@ class SuperAdderSpec
           if (allNone) None else Some(total)
         }
       }
-    }
-  }
-}

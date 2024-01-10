@@ -10,10 +10,10 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 
 class SemigroupSpec
-  extends AnyFunSpec
+    extends AnyFunSpec
     with Matchers
-    with ScalaCheckPropertyChecks {
-  describe("Set Semigroup") {
+    with ScalaCheckPropertyChecks:
+  describe("Set Semigroup"):
     val intSetsGen = for {
       i1 <- Gen.listOf(arbitrary[Int])
       i2 <- Gen.listOf(arbitrary[Int])
@@ -25,7 +25,7 @@ class SemigroupSpec
       s3 <- Gen.listOf(arbitrary[String])
     } yield (s1.toSet, s2.toSet, s3.toSet)
 
-    it("setInterSectionSemigroup instance satisfies semigroup laws") {
+    it("setInterSectionSemigroup instance satisfies semigroup laws"):
       import group.SemigroupInstances.setInterSectionSemigroup
       forAll(intSetsGen) { (si1, si2, si3) =>
         SemigroupLaws.associativeLaw(si1, si2, si3) shouldBe true
@@ -33,6 +33,3 @@ class SemigroupSpec
       forAll(stringSetGen) { (ss1, ss2, ss3) =>
         SemigroupLaws.associativeLaw(ss1, ss2, ss3) shouldBe true
       }
-    }
-  }
-}

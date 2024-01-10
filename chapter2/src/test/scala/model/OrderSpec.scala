@@ -10,18 +10,15 @@ import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 
-class OrderSpec extends AnyFunSpec with Matchers with ScalaCheckPropertyChecks {
-  describe("Order") {
+class OrderSpec extends AnyFunSpec with Matchers with ScalaCheckPropertyChecks:
+  describe("Order"):
     val orderGenerator = for {
       totalCost <- arbitrary[Double]
       quantity <- arbitrary[Double]
     } yield Order(totalCost, quantity)
 
-    it("orderMonoid instance satisfies monoid laws.") {
+    it("orderMonoid instance satisfies monoid laws."):
       forAll(orderGenerator, orderGenerator, orderGenerator) { (o1, o2, o3) =>
         MonoidLaws.associativeLaw(o1, o2, o3) shouldBe true
         MonoidLaws.identityLaw(o1) shouldBe true
       }
-    }
-  }
-}
