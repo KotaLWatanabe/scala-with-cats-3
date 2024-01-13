@@ -1,6 +1,6 @@
 import model.Cat
 import print.PrintableInstances.given
-import print.PrintableSyntax._
+import print.PrintableSyntax.*
 import cats.syntax.show.*
 import cats.syntax.eq.*
 
